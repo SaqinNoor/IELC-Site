@@ -10,7 +10,8 @@ const Hero = () => {
     "Where Language Meets Excellence",
     "Empowering Minds Through English", 
     "Building Tomorrow's Leaders Today",
-    "Excellence in Every Expression"
+    "Excellence in Every Expression",
+    "The Infinite Use of Finite Means"
   ]
 
   useEffect(() => {
