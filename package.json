@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint . --ext js,jsx,ts,tsx --fix"
+    "lint:fix": "eslint . --ext js,jsx,ts,tsx --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",
@@ -38,8 +40,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://saqinnoor.github.io/IELC-Site"
+    "url": "https://github.com/saqinnoor/IELC-Site.git"
   },
+  "homepage": "https://saqinnoor.github.io/IELC-Site",
   "engines": {
     "node": ">=18.0.0",
     "bun": ">=1.0.0"

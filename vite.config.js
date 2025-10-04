@@ -13,6 +13,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
+  // GitHub Pages configuration
+  base: '/IELC-Site/',
+  
   // Development server configuration
   server: {
     port: 3000,
