@@ -22,7 +22,7 @@ const Statement = () => {
             <div className="moderator-photo">
               <div className="photo-frame">
                 <img 
-                  src="/testimonial.jpg" 
+                  src={(import.meta.env.BASE_URL || '/') + 'testimonial.jpg'} 
                   alt="Nizam Uddin Kamal - Moderator of Ideal English Language Club"
                   className="moderator-img"
                 />

@@ -22,42 +22,42 @@ const CarnivalShowcase = () => {
       id: 1,
       title: "1st IELC National English Language Carnival",
       date: "Aug 4-Aug 5, 2017",
-      image: "/images/NELC/1nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/1nelc.jpg',
       year: 2017
     },
     {
       id: 2,
       title: "2nd IELC National English Language Carnival",
       date: "May 10-May 12, 2018",
-      image: "/images/NELC/2nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/2nelc.jpg',
       year: 2018
     },
     {
       id: 3,
       title: "3rd IELC National English Language Carnival", 
       date: "Apr 11-Apr 13, 2019",
-      image: "/images/NELC/3nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/3nelc.jpg',
       year: 2019
     },
     {
       id: 4,
       title: "4th IELC National English Language Carnival",
       date: "Jul 21-Jul 23, 2023",
-      image: "/images/NELC/4nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/4nelc.jpg',
       year: 2023
     },
     {
       id: 5,
       title: "5th IELC National English Language Carnival",
       date: "May 10-May 11, 2024",
-      image: "/images/NELC/5nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/5nelc.jpg',
       year: 2024
     },
     {
       id: 6,
       title: "6th IELC National English Language Carnival",
       date: "Oct 31-Nov 1, 2025",
-      image: "/images/NELC/6nelc.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/NELC/6nelc.jpg',
       year: 2025
     }
   ]
@@ -68,21 +68,21 @@ const CarnivalShowcase = () => {
       id: 1,
       title: "Eloquence 1.0",
       date: "May 19-May 20, 2020",
-      image: "/images/Eloquence/1eloquence.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/Eloquence/1eloquence.jpg',
       year: 2020
     },
     {
       id: 2,
       title: "Eloquence 2.0", 
       date: "Oct 21, 2022",
-      image: "/images/Eloquence/2eloquence.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/Eloquence/2eloquence.jpg',
       year: 2022
     },
     {
       id: 3,
       title: "Eloquence 3.0",
       date: "Sept 16, 2024",
-      image: "/images/Eloquence/3eloquence.jpg",
+  image: (import.meta.env.BASE_URL || '/') + 'images/Eloquence/3eloquence.jpg',
       year: 2024
     }
   ]

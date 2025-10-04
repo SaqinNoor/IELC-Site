@@ -9,6 +9,7 @@ const Links = () => {
       title: "Our Events",
       description: "Explore Past Carnivals",
       className: "link-events",
+      image: (import.meta.env.BASE_URL || '/') + 'images/NELC/6nelc.jpg',
       href: "/carnivals",
       delay: 0
     },
@@ -17,6 +18,7 @@ const Links = () => {
       title: "Our Executives",
       description: "Meet the Executive Committee",
       className: "link-executives",
+      image: (import.meta.env.BASE_URL || '/') + 'images/EC/9thexec.jpg',
       href: "/executives",
       delay: 0.1
     }
@@ -32,7 +34,7 @@ const Links = () => {
               to={link.href}
               className={`link-card ${link.className}`}
               data-reveal
-              style={{ transitionDelay: `${link.delay}s` }}
+              style={{ transitionDelay: `${link.delay}s`, backgroundImage: `url(${link.image})` }}
               onClick={() => {
                 // For the carnivals and executives pages ensure we land at the top of the page
                 if (link.href === '/carnivals' || link.href === '/executives') {

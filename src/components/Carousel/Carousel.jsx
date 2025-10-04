@@ -56,7 +56,7 @@ const Carousel = ({ events, type }) => {
             <img 
               src={currentEvent.image} 
               alt={currentEvent.title}
-              onError={(e) => { e.target.src = '/placeholder-event.jpg'; }}
+              onError={(e) => { e.target.src = (import.meta.env.BASE_URL || '/') + 'placeholder-event.jpg'; }}
             />
             <div className="image-overlay">
               <h3>{currentEvent.title}</h3>

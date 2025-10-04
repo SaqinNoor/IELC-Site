@@ -765,10 +765,6 @@ svg#waveSVG {
   transition: stroke 0.3s ease;
 }
 
-.nav .theme-toggle:hover svg {
-  /* Keep original colors on hover, no override needed */
-}
-
 .light .nav .theme-toggle {
   background: rgba(255, 255, 255, 0.9);
   border-color: var(--border-light);
@@ -1548,7 +1544,6 @@ svg#waveSVG {
 }
 
 .link-events {
-  background-image: url('/images/NELC/6nelc.jpg');
   background-position: center center;
 }
 
@@ -1557,7 +1552,6 @@ svg#waveSVG {
 }
 
 .link-executives {
-  background-image: url('/images/EC/9thexec.jpg');
   background-position: center center;
 }
 
