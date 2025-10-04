@@ -1446,11 +1446,11 @@ svg#waveSVG {
 }
 
 .link-events {
-  background-image: url('https://raw.githubusercontent.com/AKMSaqin/saqin-portfolio-23/main/IELC-Assets/IELC-event.jpg');
+  background-image: url('/images/NELC/6nelc.jpg');
 }
 
 .link-executives {
-  background-image: url('https://raw.githubusercontent.com/AKMSaqin/saqin-portfolio-23/main/IELC-Assets/IELC-execs.jpg');
+  background-image: url('/images/EC/9thexec.jpg');
 }
 
 /* ===== Statement Section Styles ===== */

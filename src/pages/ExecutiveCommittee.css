@@ -109,7 +109,7 @@
 }
 
 .section-title {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin: 0 0 30px;
   color: var(--text-primary);
@@ -142,12 +142,12 @@
 }
 
 .subsection-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 20px;
   color: var(--red);
   text-align: center;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: rgba(229, 9, 20, 0.1);
   border-radius: 12px;
   border: 1px solid rgba(229, 9, 20, 0.2);
@@ -297,6 +297,14 @@
   .ec-intro h2 {
     font-size: 1.8rem;
   }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .subsection-title {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -333,10 +341,10 @@
   }
   
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   .subsection-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }

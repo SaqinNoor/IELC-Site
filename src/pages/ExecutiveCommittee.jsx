@@ -114,7 +114,8 @@ const ExecutiveCommittee = () => {
           src={`/images/EC/9/${member.image}`} 
           alt={member.name}
           onError={(e) => {
-            e.target.src = '/placeholder-event.jpg';
+            // Use default profile picture
+            e.target.src = '/default_pfp.svg';
           }}
         />
       </div>
