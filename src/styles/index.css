@@ -15,12 +15,54 @@
 
 /* ===== CSS Custom Properties (CSS Variables) ===== */
 :root {
+  /* Dark Mode Colors (default) */
   --black: #050505;
   --dark-gray: #111111;
   --mid-gray: #1c1c1c;
   --light-gray: #a0a0a0;
   --red: #e50914;
   --white: #ffffff;
+  
+  /* Background colors */
+  --bg-primary: var(--black);
+  --bg-secondary: var(--dark-gray);
+  --bg-tertiary: var(--mid-gray);
+  
+  /* Text colors */
+  --text-primary: var(--white);
+  --text-secondary: var(--light-gray);
+  
+  /* Border and glassmorphism colors */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  
+  /* Shadow colors */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-red: rgba(229, 9, 20, 0.2);
+}
+
+/* Light Mode Variables */
+.light {
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  
+  /* Text colors */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  
+  /* Border and glassmorphism colors */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-medium: rgba(0, 0, 0, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-hover: rgba(255, 255, 255, 0.9);
+  
+  /* Shadow colors */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-red: rgba(229, 9, 20, 0.15);
 }
 
 /* ===== Font Face Declarations ===== */
@@ -56,12 +98,13 @@ html, body {
 body {
   margin: 0;
   font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  color: var(--white);
-  background: var(--black);
+  color: var(--text-primary);
+  background: var(--bg-primary);
   overflow-x: hidden;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: -0.01em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -408,7 +451,7 @@ svg#waveSVG {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--white);
+  color: var(--text-primary);
   margin: 0 0 14px;
   text-align: center;
   position: relative;
@@ -430,7 +473,7 @@ svg#waveSVG {
 }
 
 .section-sub {
-  color: var(--light-gray);
+  color: var(--text-secondary);
   margin-top: -6px;
   max-width: 600px;
   margin-left: auto;
@@ -447,8 +490,34 @@ svg#waveSVG {
   z-index: 60;
   backdrop-filter: blur(20px) saturate(180%);
   background: rgba(5, 5, 5, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.light .nav {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.light .nav .brand .brand-text {
+  color: var(--text-primary);
+}
+
+.light .nav a.btn {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.light .nav a.btn:hover {
+  background: rgba(229, 9, 20, 0.1) !important;
+  border-color: rgba(229, 9, 20, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+.light .nav a.btn.ghost {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--border-light);
 }
 
 .nav .inner {
@@ -502,6 +571,7 @@ svg#waveSVG {
   backdrop-filter: blur(20px) saturate(180%);
   font-weight: 600;
   font-size: 0.9rem;
+  color: var(--white);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
@@ -526,6 +596,7 @@ svg#waveSVG {
 .nav a.btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(229, 9, 20, 0.4);
+  color: var(--white);
   transform: translateY(-2px);
   box-shadow: 
     0 8px 25px rgba(229, 9, 20, 0.2),
@@ -637,6 +708,161 @@ svg#waveSVG {
   stroke: var(--red);
 }
 
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.theme-toggle:hover {
+  background: var(--glass-hover);
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow-red);
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
+}
+
+.theme-toggle svg {
+  stroke: var(--text-secondary);
+  transition: stroke 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  stroke: var(--red);
+}
+
+/* Theme toggle icons - colors handled directly in SVG */
+.nav .theme-toggle svg {
+  transition: stroke 0.3s ease;
+}
+
+.nav .theme-toggle:hover svg {
+  /* Keep original colors on hover, no override needed */
+}
+
+.light .nav .theme-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border-light);
+}
+
+.light .nav .theme-toggle:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: rgba(229, 9, 20, 0.3);
+}
+
+/* Light mode toggle colors handled in SVG */
+
+/* Mobile theme toggle */
+.mobile-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-light);
+  font-weight: '600', sans-serif;
+  font-size: '1rem', sans-serif;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.mobile-theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.mobile-theme-toggle:hover {
+  background: var(--glass-hover);
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-red);
+}
+
+.mobile-theme-toggle:hover::before {
+  opacity: 1;
+}
+
+.theme-toggle-text {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.mobile-theme-toggle svg {
+  stroke: var(--red);
+  transition: stroke 0.3s ease;
+}
+
+/* Light mode background effects adjustments */
+.light .wave-wrap {
+  opacity: 0.08;
+}
+
+.light .floating-circle {
+  border-color: rgba(229, 9, 20, 0.05);
+}
+
+.light .geo-shape {
+  background: rgba(229, 9, 20, 0.02);
+  border-color: rgba(229, 9, 20, 0.05);
+}
+
+.light .radial-pulse {
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.05) 0%, transparent 70%);
+}
+
+.light .spotlight {
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(229, 9, 20, 0.06) 0%, 
+                rgba(229, 9, 20, 0.02) 30%, 
+                transparent 70%);
+}
+
+.light .loader {
+  background: radial-gradient(circle, #f8f9fa, var(--bg-primary));
+}
+
 /* ===== Hero Section Styles ===== */
 .hero {
   min-height: 95vh;
@@ -675,20 +901,28 @@ svg#waveSVG {
   font-weight: 800;
   font-size: 24px;
   line-height: 1.2;
-  color: var(--white);
+  color: var(--text-primary);
   margin: 0 0 20px 0;
   letter-spacing: -0.01em;
   opacity: 1;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-medium);
   border-radius: 50px;
   padding: 12px 24px;
   display: inline-block;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px var(--shadow-color),
+    inset 0 1px 0 var(--border-light);
   transition: all 0.3s ease;
+}
+
+.light .hero-title {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-medium);
+  box-shadow: 
+    0 8px 32px var(--shadow-color),
+    inset 0 1px 0 var(--border-light);
 }
 
 .hero-title:hover {
@@ -738,12 +972,12 @@ svg#waveSVG {
   font-weight: 400;
   font-size: clamp(1.4rem, 4vw, 2.8rem);
   line-height: 1.2;
-  color: var(--white);
+  color: var(--text-primary);
   opacity: 0;
   transform: translateY(20px);
   transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-align: center;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 20px var(--shadow-color);
   letter-spacing: 0.08em;
   max-width: 800px;
   margin: 0 auto;
@@ -782,7 +1016,7 @@ svg#waveSVG {
 .hero-description p {
   font-size: clamp(1.08rem, 2.2vw, 1.3rem);
   line-height: 1.6;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-weight: 400;
   opacity: 0;
   transform: translateY(30px);
@@ -826,7 +1060,7 @@ svg#waveSVG {
 
 .scroll-text {
   font-size: 0.85rem;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-weight: 500;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -835,7 +1069,7 @@ svg#waveSVG {
 }
 
 .scroll-indicator:hover .scroll-text {
-  color: var(--white);
+  color: var(--text-primary);
 }
 
 .scroll-arrow {
@@ -859,7 +1093,7 @@ svg#waveSVG {
 }
 
 .scroll-arrow svg {
-  color: var(--light-gray);
+  color: var(--text-secondary);
   transition: color 0.3s ease;
 }
 
@@ -906,13 +1140,18 @@ svg#waveSVG {
   backdrop-filter: blur(20px) saturate(180%);
   border-radius: 18px;
   padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-medium);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px var(--shadow-color),
+    inset 0 1px 0 var(--border-light);
+}
+
+.light .card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-medium);
 }
 
 .card::before {
@@ -966,14 +1205,14 @@ svg#waveSVG {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--white);
+  color: var(--text-primary);
   text-align: center;
   justify-content: center;
 }
 
 .card p {
   margin: 0;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.5;
   text-align: center;
@@ -1028,7 +1267,7 @@ svg#waveSVG {
 .journey p {
   text-align: left;
   max-width: none;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
@@ -1094,7 +1333,7 @@ svg#waveSVG {
 .counter-item .label {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   margin-top: 0;
 }
 
@@ -1143,7 +1382,7 @@ svg#waveSVG {
 
 .link-card p {
   margin: 0;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   border: 1px solid var(--red);
   display: inline-block;
@@ -1168,11 +1407,15 @@ svg#waveSVG {
   border-radius: 20px;
   max-width: 1000px;
   margin: 40px auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-light);
   box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 15px 35px var(--shadow-color),
+    inset 0 1px 0 var(--border-light);
   transition: all 0.4s ease;
+}
+
+.light .statement-box {
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .statement-box:hover {
@@ -1196,7 +1439,7 @@ svg#waveSVG {
 
 .statement-box p {
   font-style: italic;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   margin: 0 0 20px 0;
   line-height: 1.6;
   font-size: 1rem;
@@ -1205,14 +1448,14 @@ svg#waveSVG {
 .statement-box .author {
   font-weight: 700;
   font-style: normal;
-  color: var(--white);
+  color: var(--text-primary);
   font-size: 1.1rem;
 }
 
 .statement-box .author span {
   display: block;
   font-weight: 400;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin-top: 4px;
 }
@@ -1309,7 +1552,7 @@ svg#waveSVG {
 footer {
   padding: 40px 20px;
   text-align: center;
-  color: var(--light-gray);
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 

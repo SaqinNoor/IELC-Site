@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Loader from './components/Loader/Loader'
 import Navigation from './components/Navigation/Navigation'
 import Hero from './components/Hero/Hero'
@@ -22,8 +23,9 @@ function App() {
   useDynamicBackground()
 
   return (
-    <Router>
-      <div className="app">
+    <ThemeProvider>
+      <Router>
+        <div className="app">
         <Loader />
         <Navigation />
         <BackgroundEffects />
@@ -40,8 +42,9 @@ function App() {
         </main>
         
         <Footer />
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ThemeProvider>
   )
 }
 

@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react'
 // Loading screen component
 const Loader = () => {
   const [isVisible, setIsVisible] = useState(true)
+  
+  // Get theme from localStorage directly since ThemeProvider might not be ready
+  const savedTheme = localStorage.getItem('ielc-theme') || 'dark'
+  const isLight = savedTheme === 'light'
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,7 +30,7 @@ const Loader = () => {
     >
       <div className="loader-logo">
         <img 
-          src="/IELC-logo.svg" 
+          src={isLight ? "/IELC-logo-black.svg" : "/IELC-logo.svg"} 
           alt="IELC Logo" 
           className="loader-logo-img"
         />

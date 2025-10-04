@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 // Navigation component with mobile menu
 const Navigation = () => {
+  const { toggleTheme, getThemeIcon, isLight } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -33,7 +35,7 @@ const Navigation = () => {
           {/* Brand Logo and Name */}
           <a href="#" className="brand">
             <img 
-              src="/IELC-logo.svg" 
+              src={isLight ? "/IELC-logo-black.svg" : "/IELC-logo.svg"} 
               alt="IELC Logo" 
               className="header-logo-img"
             />
@@ -74,6 +76,16 @@ const Navigation = () => {
                 Contact
               </a>
             </div>
+
+            {/* Theme Toggle */}
+            <button 
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title="Toggle light/dark mode"
+            >
+              {getThemeIcon()}
+            </button>
 
             {/* Visual Divider */}
             <div className="nav-divider"></div>
@@ -175,6 +187,17 @@ const Navigation = () => {
         </div>
 
         <div className="mobile-social-section">
+          <h3 className="mobile-section-title">Settings</h3>
+          <button 
+            className="mobile-theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title="Toggle light/dark mode"
+          >
+            {getThemeIcon()}
+            <span className="theme-toggle-text">Switch to {isLight ? "Dark" : "Light"} Mode</span>
+          </button>
+          
           <h3 className="mobile-section-title">Connect</h3>
           <div className="social-links">
             <a 
