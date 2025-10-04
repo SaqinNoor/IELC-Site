@@ -13,8 +13,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
-  // GitHub Pages configuration
-  base: '/IELC-Site/',
+  // GitHub Pages configuration — only apply base during build
+  base: process.env.NODE_ENV === 'production' ? '/IELC-Site/' : '/',
   
   // Development server configuration
   server: {

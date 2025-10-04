@@ -30,7 +30,7 @@ const Loader = () => {
     >
       <div className="loader-logo">
         <img 
-          src={isLight ? "/IELC-logo-black.svg" : "/IELC-logo.svg"} 
+          src={(import.meta.env.BASE_URL || '/') + (isLight ? "IELC-logo-black.svg" : "IELC-logo.svg")} 
           alt="IELC Logo" 
           className="loader-logo-img"
         />

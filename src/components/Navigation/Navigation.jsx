@@ -35,7 +35,7 @@ const Navigation = () => {
           {/* Brand Logo and Name */}
           <a href="#" className="brand">
             <img 
-              src={isLight ? "/IELC-logo-black.svg" : "/IELC-logo.svg"} 
+              src={(import.meta.env.BASE_URL || '/') + (isLight ? "IELC-logo-black.svg" : "IELC-logo.svg")} 
               alt="IELC Logo" 
               className="header-logo-img"
             />
