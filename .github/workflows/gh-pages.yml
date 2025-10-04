@@ -21,13 +21,24 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build site
-        run: npm run build
-
-      - name: Deploy to gh-pages branch
+      - name: Install, build and deploy (choose Bun if available)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
+        run: |
+          if [ -f ./bun.lock ]; then
+            echo "Detected bun.lock — using Bun"
+            # Install Bun (install script) and ensure bun is on PATH
+            curl -fsSL https://bun.sh/install | bash
+            export BUN_INSTALL_DIR="$HOME/.bun"
+            export PATH="$BUN_INSTALL_DIR/bin:$PATH"
+            bun --version
+            bun install
+            bun run build
+            # Use bunx to run gh-pages package (gh-pages is in dependencies)
+            bunx gh-pages -d dist
+          else
+            echo "bun.lock not found — falling back to npm"
+            npm install
+            npm run build
+            npm run deploy
+          fi
