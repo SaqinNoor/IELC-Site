@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Activities showcase section
 const Activities = () => {
@@ -65,6 +66,18 @@ const Activities = () => {
               <p>{activity.description}</p>
             </div>
           ))}
+        </div>
+
+        {/* Executive Committee Link */}
+        <div className="activities-cta" data-reveal style={{ transitionDelay: '0.5s' }}>
+          <Link to="/executives" className="btn cta">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="8.5" cy="7" r="4" stroke="currentColor" strokeWidth="2"/>
+              <path d="M20 8v6M23 11l-3 3-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Meet Our Executive Committee
+          </Link>
         </div>
       </div>
     </section>

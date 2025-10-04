@@ -17,7 +17,7 @@ const Links = () => {
       title: "Our Executives",
       description: "Meet the Teams",
       className: "link-executives",
-      href: "#",
+      href: "/executives",
       delay: 0.1
     }
   ]
@@ -34,8 +34,8 @@ const Links = () => {
               data-reveal
               style={{ transitionDelay: `${link.delay}s` }}
               onClick={() => {
-                // For the carnivals page ensure we land at the top of the page
-                if (link.href === '/carnivals') {
+                // For the carnivals and executives pages ensure we land at the top of the page
+                if (link.href === '/carnivals' || link.href === '/executives') {
                   window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
                 }
               }}

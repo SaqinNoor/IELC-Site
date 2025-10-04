@@ -1225,6 +1225,61 @@ svg#waveSVG {
   flex-shrink: 0;
 }
 
+/* Activities CTA Button */
+.activities-cta {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: rgba(229, 9, 20, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(229, 9, 20, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.activities-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--red) 0%, #ff6b6b 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.activities-cta .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.activities-cta .btn:hover::before {
+  left: 100%;
+}
+
+.activities-cta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(229, 9, 20, 0.4);
+}
+
+.activities-cta .btn svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 /* ===== Journey Section Styles ===== */
 .journey .container {
   display: flex;

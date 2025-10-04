@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer'
 import BackgroundEffects from './components/BackgroundEffects/BackgroundEffects'
 import Spotlight from './components/Spotlight/Spotlight'
 import CarnivalShowcase from './pages/CarnivalShowcase'
+import ExecutiveCommittee from './pages/ExecutiveCommittee'
 import { useScrollReveal, useParallax, useDynamicBackground } from './hooks/useScrollReveal'
 
 // Home page component with hooks
@@ -51,6 +52,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/carnivals" element={<CarnivalShowcase />} />
+            <Route path="/executives" element={<ExecutiveCommittee />} />
           </Routes>
           
           <Footer />
