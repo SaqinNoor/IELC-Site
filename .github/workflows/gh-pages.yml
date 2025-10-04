@@ -15,30 +15,42 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 18
+      - name: Detect bun.lock
+        id: detect_bun
+        run: |
+          if [ -f ./bun.lock ]; then
+            echo "use_bun=true" >> $GITHUB_OUTPUT
+          else
+            echo "use_bun=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Use Node.js 18 (only when not using Bun)
+        if: steps.detect_bun.outputs.use_bun == 'false'
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install, build and deploy (choose Bun if available)
+      - name: "Bun: Install, build and deploy"
+        if: steps.detect_bun.outputs.use_bun == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -f ./bun.lock ]; then
-            echo "Detected bun.lock — using Bun"
-            # Install Bun (install script) and ensure bun is on PATH
-            curl -fsSL https://bun.sh/install | bash
-            export BUN_INSTALL_DIR="$HOME/.bun"
-            export PATH="$BUN_INSTALL_DIR/bin:$PATH"
-            bun --version
-            bun install
-            bun run build
-            # Use bunx to run gh-pages package (gh-pages is in dependencies)
-            bunx gh-pages -d dist
-          else
-            echo "bun.lock not found — falling back to npm"
-            npm install
-            npm run build
-            npm run deploy
-          fi
+          echo "Detected bun.lock — using Bun"
+          curl -fsSL https://bun.sh/install | bash
+          export BUN_INSTALL_DIR="$HOME/.bun"
+          export PATH="$BUN_INSTALL_DIR/bin:$PATH"
+          bun --version
+          bun install
+          bun run build
+          bunx gh-pages -d dist
+
+      - name: "NPM: Install, build and deploy (fallback)"
+        if: steps.detect_bun.outputs.use_bun == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "bun.lock not found — using npm"
+          npm install
+          npm run build
+          npm run deploy
