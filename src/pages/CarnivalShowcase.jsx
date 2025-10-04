@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Carousel from '../components/Carousel/Carousel'
+import Spotlight from '../components/Spotlight/Spotlight'
+import BackgroundEffects from '../components/BackgroundEffects/BackgroundEffects'
 import './CarnivalShowcase.css'
 
 const CarnivalShowcase = () => {
@@ -87,6 +89,10 @@ const CarnivalShowcase = () => {
 
   return (
     <div className="carnival-showcase">
+      {/* Background Effects */}
+      <BackgroundEffects />
+      <Spotlight />
+      
       {/* Header */}
       <div className="carnival-header">
         <div className="carnival-nav">

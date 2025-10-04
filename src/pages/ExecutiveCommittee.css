@@ -5,6 +5,8 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -67,6 +69,15 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.ec-header h1:hover {
+  background: linear-gradient(135deg, var(--red) 0%, #ff6b6b 50%, var(--red) 100%);
+  background-size: 200% 200%;
+  animation: elegantShimmer 2s ease-in-out infinite;
+  transform: scale(1.02);
 }
 
 /* Main Content */
@@ -92,6 +103,31 @@
   border-radius: 16px;
   padding: 16px 32px;
   display: inline-block;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.ec-intro h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.ec-intro h2:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(229, 9, 20, 0.15);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.2);
+}
+
+.ec-intro h2:hover::before {
+  left: 100%;
 }
 
 .ec-intro p {
@@ -115,6 +151,22 @@
   color: var(--text-primary);
   text-align: center;
   position: relative;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .section-title::after {
@@ -127,6 +179,23 @@
   height: 3px;
   background: var(--red);
   border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.section-title:hover {
+  transform: translateY(-2px);
+  color: var(--red);
+}
+
+.section-title:hover::before {
+  opacity: 1;
+}
+
+.section-title:hover::after {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--red), #ff6b6b, var(--red));
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
 }
 
 .members-grid {
@@ -151,6 +220,32 @@
   background: rgba(229, 9, 20, 0.1);
   border-radius: 12px;
   border: 1px solid rgba(229, 9, 20, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.subsection-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.subsection-title:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(229, 9, 20, 0.15);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.2);
+}
+
+.subsection-title:hover::before {
+  left: 100%;
 }
 
 .subsection-members {
@@ -168,20 +263,32 @@
   padding: 25px;
   border: 1px solid var(--border-light);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-align: center;
   position: relative;
   overflow: hidden;
+  animation: slideUpFade 0.8s ease forwards;
 }
+
+.member-card:nth-child(1) { animation-delay: 0.1s; }
+.member-card:nth-child(2) { animation-delay: 0.2s; }
+.member-card:nth-child(3) { animation-delay: 0.3s; }
+.member-card:nth-child(4) { animation-delay: 0.4s; }
+.member-card:nth-child(5) { animation-delay: 0.5s; }
+.member-card:nth-child(6) { animation-delay: 0.6s; }
 
 .light .member-card {
   background: rgba(255, 255, 255, 0.9);
 }
 
 .member-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-  border-color: rgba(229, 9, 20, 0.3);
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 
+    0 30px 70px rgba(229, 9, 20, 0.3),
+    0 0 40px rgba(229, 9, 20, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(229, 9, 20, 0.5);
+  backdrop-filter: blur(35px) saturate(200%);
 }
 
 .member-card::before {
@@ -348,3 +455,121 @@
     font-size: 1.2rem;
   }
 }
+
+/* ===== Animations ===== */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes elegantShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+  }
+}
+
+/* ===== Scroll Reveal Animations ===== */
+.ec-section[data-reveal] {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ec-section[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ec-intro[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.ec-intro[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Floating Animation for Cards ===== */
+.member-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.member-card:nth-child(odd) {
+  animation-delay: 0s;
+}
+
+.member-card:nth-child(even) {
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== Enhanced Hover Effects ===== */
+.member-name {
+  transition: all 0.3s ease;
+}
+
+.member-card:hover .member-name {
+  color: var(--red);
+  transform: translateY(-2px);
+}
+
+.member-position {
+  transition: all 0.3s ease;
+}
+
+.member-card:hover .member-position {
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* ===== Glow Effects ===== */
+.ec-header {
+  position: relative;
+}
+
+.ec-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0.5;
+}
+
+/* ===== Section Reveal Stagger ===== */
+.ec-section:nth-child(1) { transition-delay: 0.1s; }
+.ec-section:nth-child(2) { transition-delay: 0.2s; }
+.ec-section:nth-child(3) { transition-delay: 0.3s; }
+.ec-section:nth-child(4) { transition-delay: 0.4s; }
+.ec-section:nth-child(5) { transition-delay: 0.5s; }
+.ec-section:nth-child(6) { transition-delay: 0.6s; }

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Spotlight from '../components/Spotlight/Spotlight'
+import BackgroundEffects from '../components/BackgroundEffects/BackgroundEffects'
 import './ExecutiveCommittee.css'
 
 const ExecutiveCommittee = () => {
@@ -164,6 +166,10 @@ const ExecutiveCommittee = () => {
 
   return (
     <div className="executive-committee">
+      {/* Background Effects */}
+      <BackgroundEffects />
+      <Spotlight />
+      
       {/* Header */}
       <div className="ec-header">
         <div className="ec-nav">

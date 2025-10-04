@@ -89,6 +89,8 @@
 
 html {
   scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
 }
 
 html, body {
@@ -97,6 +99,7 @@ html, body {
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -865,15 +868,16 @@ svg#waveSVG {
 
 /* ===== Hero Section Styles ===== */
 .hero {
-  min-height: 95vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   position: relative;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .hero::before {
