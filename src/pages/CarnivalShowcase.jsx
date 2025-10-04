@@ -10,42 +10,42 @@ const CarnivalShowcase = () => {
       id: 1,
       title: "1st IELC National English Language Carnival",
       date: "Aug 4-Aug 5, 2017",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc1-${i + 1}.jpg`),
+      image: "/images/NELC/1nelc.jpg",
       year: 2017
     },
     {
       id: 2,
       title: "2nd IELC National English Language Carnival",
       date: "May 10-May 12, 2018",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc2-${i + 1}.jpg`),
+      image: "/images/NELC/2nelc.jpg",
       year: 2018
     },
     {
       id: 3,
       title: "3rd IELC National English Language Carnival", 
       date: "Apr 11-Apr 13, 2019",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc3-${i + 1}.jpg`),
+      image: "/images/NELC/3nelc.jpg",
       year: 2019
     },
     {
       id: 4,
       title: "4th IELC National English Language Carnival",
       date: "Jul 21-Jul 23, 2023",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc4-${i + 1}.jpg`),
+      image: "/images/NELC/4nelc.jpg",
       year: 2023
     },
     {
       id: 5,
       title: "5th IELC National English Language Carnival",
       date: "May 10-May 11, 2024",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc5-${i + 1}.jpg`),
+      image: "/images/NELC/5nelc.jpg",
       year: 2024
     },
     {
       id: 6,
       title: "6th IELC National English Language Carnival",
       date: "Oct 31-Nov 1, 2025",
-      images: Array.from({ length: 5 }, (_, i) => `/images/NELC/nelc6-${i + 1}.jpg`),
+      image: "/images/NELC/6nelc.jpg",
       year: 2025
     }
   ]
@@ -56,21 +56,21 @@ const CarnivalShowcase = () => {
       id: 1,
       title: "Eloquence 1.0",
       date: "May 19-May 20, 2020",
-      images: Array.from({ length: 4 }, (_, i) => `/images/Eloquence/eloquence1-${i + 1}.jpg`),
+      image: "/images/Eloquence/1eloquence.jpg",
       year: 2020
     },
     {
       id: 2,
       title: "Eloquence 2.0", 
       date: "Oct 21, 2022",
-      images: Array.from({ length: 4 }, (_, i) => `/images/Eloquence/eloquence2-${i + 1}.jpg`),
+      image: "/images/Eloquence/2eloquence.jpg",
       year: 2022
     },
     {
       id: 3,
       title: "Eloquence 3.0",
       date: "Sept 16, 2024",
-      images: Array.from({ length: 4 }, (_, i) => `/images/Eloquence/eloquence3-${i + 1}.jpg`),
+      image: "/images/Eloquence/3eloquence.jpg",
       year: 2024
     }
   ]
