@@ -4,6 +4,10 @@ import Carousel from '../components/Carousel/Carousel'
 import './CarnivalShowcase.css'
 
 const CarnivalShowcase = () => {
+  useEffect(() => {
+    // Ensure we start at the top of the carousel page when navigated to
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
   // IELC Carnival data
   const ielcCarnivals = [
     {

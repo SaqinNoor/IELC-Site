@@ -102,25 +102,23 @@
   margin: 0 auto;
 }
 
-/* Carousel Container */
-.carousel-container {
+/* Carousel Styles */
+.carousel {
   position: relative;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(30px) saturate(180%);
-  border-radius: 24px;
-  padding: 40px;
+  border-radius: 20px;
+  padding: 25px;
   border: 1px solid var(--border-light);
   box-shadow: 0 20px 60px var(--shadow-color);
   transition: all 0.3s ease;
+  width: fit-content;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.light .carousel-container {
+.light .carousel {
   background: rgba(255, 255, 255, 0.9);
-}
-
-.carousel-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 30px 80px var(--shadow-color);
 }
 
 .ielc-carousel {
@@ -132,67 +130,22 @@
   margin-top: 80px;
 }
 
-/* Main Carousel */
-.carousel-main {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-/* Navigation */
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border-light);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-  display: flex;
-  align-items: center;
+/* Navigation Dots */
+.carousel-dots {
+  display: inline-flex;
   justify-content: center;
-}
-
-.carousel-nav:hover {
-  background: rgba(229, 9, 20, 0.2);
-  border-color: rgba(229, 9, 20, 0.4);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 25px var(--shadow-red);
-}
-
-.carousel-nav svg {
-  width: 24px;
-  height: 24px;
-}
-
-.carousel-prev {
-  left: -70px;
-}
-
-.carousel-next {
-  right: -70px;
-}
-
-/* Event Indicators */
-.event-indicators {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
   gap: 8px;
-  z-index: 10;
+  margin: 0 auto 20px auto;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: fit-content;
 }
 
-.event-dot {
+.dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -202,40 +155,53 @@
   transition: all 0.3s ease;
 }
 
-.event-dot.active {
+.dot.active {
   background: var(--red);
-  transform: scale(1.3);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
-}
-
-.event-dot:hover {
-  background: rgba(229, 9, 20, 0.6);
   transform: scale(1.2);
 }
 
-/* Image Display */
-.image-display {
-  position: relative;
-  grid-column: 1;
+.dot:hover {
+  background: rgba(229, 9, 20, 0.6);
 }
 
-.current-image {
+/* Main Content Layout */
+.carousel-content {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Image Section */
+.image-section {
+  flex: 0 0 450px;
+}
+
+.image-container {
   position: relative;
+  width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--bg-secondary);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-.current-image img {
+.image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.5s ease;
 }
 
-.current-image:hover img {
+.image-container:hover img {
   transform: scale(1.05);
 }
 
@@ -249,64 +215,40 @@
   color: white;
 }
 
-.image-info h3 {
+.image-overlay h3 {
   font-size: 1.4rem;
   font-weight: 700;
   margin: 0 0 5px;
 }
 
-.event-date {
+.image-overlay p {
   font-size: 1rem;
   margin: 0;
   opacity: 0.9;
   font-weight: 600;
 }
 
-/* Image Indicators */
-.image-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
+/* Timeline Section */
+.timeline-section {
+  flex: 0 0 350px;
 }
 
-.image-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.image-dot.active {
-  background: var(--white);
-  transform: scale(1.3);
-}
-
-.image-dot:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* Event Timeline */
-.event-timeline {
-  grid-column: 2;
-  max-height: 500px;
+.timeline {
+  height: 253px; /* Match the 16:9 aspect ratio of 450px width image */
   overflow-y: auto;
   padding-right: 10px;
 }
 
-.event-timeline::-webkit-scrollbar {
+.timeline::-webkit-scrollbar {
   width: 6px;
 }
 
-.event-timeline::-webkit-scrollbar-track {
+.timeline::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
 
-.event-timeline::-webkit-scrollbar-thumb {
+.timeline::-webkit-scrollbar-thumb {
   background: var(--red);
   border-radius: 3px;
 }
@@ -314,10 +256,10 @@
 .timeline-item {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 16px;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -327,37 +269,80 @@
 
 .timeline-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-item.active {
   background: rgba(229, 9, 20, 0.2);
   border-color: rgba(229, 9, 20, 0.4);
-  transform: translateX(10px);
-  box-shadow: 0 8px 25px var(--shadow-red);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px var(--shadow-red);
 }
 
 .timeline-year {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 900;
   color: var(--red);
-  min-width: 60px;
+  min-width: 50px;
   text-align: center;
 }
 
 .timeline-content h4 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin: 0 0 5px;
+  margin: 0 0 3px;
   color: var(--text-primary);
 }
 
 .timeline-content p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0;
   color: var(--text-secondary);
   font-weight: 500;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.nav-arrow:hover {
+  background: rgba(229, 9, 20, 0.2);
+  border-color: rgba(229, 9, 20, 0.4);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 5px 15px var(--shadow-red);
+  opacity: 1;
+}
+
+.nav-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-arrow.prev {
+  left: -50px;
+}
+
+.nav-arrow.next {
+  right: -50px;
 }
 
 /* Footer */
@@ -377,17 +362,20 @@
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
-  .carousel-main {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .carousel-content {
+    flex-direction: column;
+    gap: 20px;
   }
   
-  .event-timeline {
-    grid-column: 1;
-    max-height: 300px;
+  .image-section {
+    max-width: 100%;
   }
   
-  .carousel-nav {
+  .timeline-section {
+    max-width: 100%;
+  }
+  
+  .nav-arrow {
     display: none;
   }
   
@@ -395,16 +383,8 @@
     font-size: 2rem;
   }
   
-  .section-sub {
+  .section-header p {
     font-size: 1rem;
-    margin: 0;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    line-height: 1.6;
-    margin: 0 auto;
   }
 }
 
@@ -419,8 +399,8 @@
     padding: 40px 15px;
   }
   
-  .carousel-container {
-    padding: 20px;
+  .carousel {
+    padding: 15px;
     border-radius: 16px;
   }
   
@@ -429,17 +409,35 @@
     padding: 12px 24px;
   }
   
-  .current-image {
+  .image-container {
     border-radius: 12px;
   }
   
   .timeline-item {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
+    gap: 8px;
+    padding: 12px;
   }
   
   .timeline-year {
     min-width: auto;
+    font-size: 1.1rem;
+  }
+  
+  .timeline-content h4 {
+    font-size: 0.9rem;
+  }
+  
+  .timeline-content p {
+    font-size: 0.8rem;
+  }
+  
+  .image-overlay h3 {
+    font-size: 1.2rem;
+  }
+  
+  .image-overlay p {
+    font-size: 0.9rem;
   }
 }

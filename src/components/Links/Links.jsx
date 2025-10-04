@@ -33,6 +33,12 @@ const Links = () => {
               className={`link-card ${link.className}`}
               data-reveal
               style={{ transitionDelay: `${link.delay}s` }}
+              onClick={() => {
+                // For the carnivals page ensure we land at the top of the page
+                if (link.href === '/carnivals') {
+                  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+                }
+              }}
             >
               <div className="link-card-content">
                 <h3>{link.title}</h3>
