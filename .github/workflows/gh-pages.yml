@@ -31,10 +31,8 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: "Bun: Install, build and deploy"
+      - name: "Bun: Install and build"
         if: steps.detect_bun.outputs.use_bun == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Detected bun.lock — using Bun"
           curl -fsSL https://bun.sh/install | bash
@@ -43,20 +41,18 @@ jobs:
           bun --version
           bun install
           bun run build
-          # configure git identity so gh-pages can commit
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-          bunx gh-pages -d dist
 
-      - name: "NPM: Install, build and deploy (fallback)"
+      - name: "NPM: Install and build (fallback)"
         if: steps.detect_bun.outputs.use_bun == 'false'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "bun.lock not found — using npm"
           npm install
           npm run build
-          # configure git identity so gh-pages can commit
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-          npm run deploy
+
+      - name: Upload artifact (dist)
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
