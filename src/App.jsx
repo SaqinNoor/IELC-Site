@@ -16,12 +16,28 @@ import Spotlight from './components/Spotlight/Spotlight'
 import CarnivalShowcase from './pages/CarnivalShowcase'
 import { useScrollReveal, useParallax, useDynamicBackground } from './hooks/useScrollReveal'
 
-// Main application component
-function App() {
-  // Initialize animation hooks
+// Home page component with hooks
+function HomePage() {
+  // Initialize animation hooks for home page
   useScrollReveal()
   useParallax()
   useDynamicBackground()
+
+  return (
+    <main>
+      <Hero />
+      <Activities />
+      <Journey />
+      <Accomplishments />
+      <Links />
+      <Statement />
+      <Contact />
+    </main>
+  )
+}
+
+// Main application component
+function App() {
 
   return (
     <ThemeProvider>
@@ -33,17 +49,7 @@ function App() {
           <Spotlight />
           
           <Routes>
-            <Route path="/" element={
-              <main>
-                <Hero />
-                <Activities />
-                <Journey />
-                <Accomplishments />
-                <Links />
-                <Statement />
-                <Contact />
-              </main>
-            } />
+            <Route path="/" element={<HomePage />} />
             <Route path="/carnivals" element={<CarnivalShowcase />} />
           </Routes>
           

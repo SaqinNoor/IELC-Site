@@ -7,6 +7,12 @@ const CarnivalShowcase = () => {
   useEffect(() => {
     // Ensure we start at the top of the carousel page when navigated to
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    
+    // Cleanup function to ensure no interference when leaving the page
+    return () => {
+      // Remove any body classes that might interfere
+      document.body.classList.remove('no-scroll');
+    };
   }, []);
   // IELC Carnival data
   const ielcCarnivals = [
