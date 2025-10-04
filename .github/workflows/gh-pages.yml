@@ -49,10 +49,9 @@ jobs:
           npm install
           npm run build
 
-      - name: Upload artifact (dist)
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to GitHub Pages (via JamesIves action)
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          branch: gh-pages
+          folder: dist
+          token: ${{ secrets.GITHUB_TOKEN }}
