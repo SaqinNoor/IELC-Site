@@ -15,7 +15,7 @@ const Links = () => {
     {
       id: 2,
       title: "Our Executives",
-      description: "Meet the Teams",
+      description: "Meet the Executive Committee",
       className: "link-executives",
       href: "/executives",
       delay: 0.1

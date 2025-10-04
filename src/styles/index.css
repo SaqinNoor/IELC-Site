@@ -1396,61 +1396,258 @@ svg#waveSVG {
 .links-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 24px;
   margin-top: 40px;
 }
 
 .link-card {
   position: relative;
-  height: 250px;
-  border-radius: 16px;
+  height: 280px;
+  border-radius: 24px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding: 24px;
+  padding: 32px;
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s ease;
+  background-repeat: no-repeat;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.link-card:hover {
-  transform: scale(1.03);
+.link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  transition: all 0.5s ease;
+  z-index: 1;
 }
 
 .link-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 70%);
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.1) 0%,
+    transparent 50%,
+    rgba(229, 9, 20, 0.2) 100%
+  );
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.link-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 60px rgba(229, 9, 20, 0.3),
+    0 0 40px rgba(229, 9, 20, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(229, 9, 20, 0.4);
+}
+
+.link-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.link-card:hover::after {
+  opacity: 1;
 }
 
 .link-card-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.link-card:hover .link-card-content {
+  transform: translateY(-8px);
 }
 
 .link-card h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;
   font-weight: 800;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  letter-spacing: -0.02em;
+}
+
+.link-card:hover h3 {
+  color: var(--white);
+  text-shadow: 0 4px 16px rgba(229, 9, 20, 0.4);
+  transform: translateY(-2px);
 }
 
 .link-card p {
   margin: 0;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  border: 1px solid var(--red);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(229, 9, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: inline-block;
-  padding: 6px 14px;
-  border-radius: 99px;
+  padding: 8px 18px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.3);
+}
+
+.link-card:hover p {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--red);
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+}
+
+/* Add shimmer effect on hover */
+.link-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  z-index: 4;
+}
+
+.link-card:hover::before {
+  left: 100%;
 }
 
 .link-events {
   background-image: url('/images/NELC/6nelc.jpg');
+  background-position: center center;
+}
+
+.link-events:hover {
+  background-position: center 30%;
 }
 
 .link-executives {
   background-image: url('/images/EC/9thexec.jpg');
+  background-position: center center;
+}
+
+.link-executives:hover {
+  background-position: center 30%;
+}
+
+/* Add entrance animation */
+.link-card[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.link-card[data-reveal]:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.link-card[data-reveal]:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add floating animation */
+.link-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.link-card:nth-child(2) {
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .link-card {
+    height: 240px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+  
+  .link-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  .link-card p {
+    font-size: 0.9rem;
+    padding: 6px 16px;
+  }
+  
+  .link-card:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+  
+  .link-card:hover .link-card-content {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .link-card {
+    height: 220px;
+    padding: 20px;
+  }
+  
+  .link-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .link-card p {
+    font-size: 0.85rem;
+    padding: 5px 14px;
+  }
 }
 
 /* ===== Statement Section Styles ===== */
