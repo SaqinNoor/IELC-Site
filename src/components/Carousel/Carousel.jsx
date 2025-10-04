@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
+// Helper to ensure asset URLs include the Vite base exactly once
+const resolveAsset = (path) => {
+  if (!path) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  // If already absolute with base, return as-is
+  if (path.startsWith(base)) return path;
+  // If it's already absolute (starts with / but not base), strip leading slashes then prefix
+  return base + path.replace(/^\/+/, '');
+};
+
 const Carousel = ({ events, type }) => {
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const currentEvent = events[currentEventIndex];
@@ -54,9 +64,9 @@ const Carousel = ({ events, type }) => {
         <div className="image-section">
           <div className="image-container">
             <img 
-              src={currentEvent.image} 
+              src={resolveAsset(currentEvent.image)} 
               alt={currentEvent.title}
-              onError={(e) => { e.target.src = (import.meta.env.BASE_URL || '/') + 'placeholder-event.jpg'; }}
+              onError={(e) => { e.target.src = resolveAsset('placeholder-event.jpg'); }}
             />
             <div className="image-overlay">
               <h3>{currentEvent.title}</h3>

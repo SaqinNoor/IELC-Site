@@ -113,7 +113,7 @@ const ExecutiveCommittee = () => {
     <div className="member-card">
       <div className="member-image">
         <img 
-          src={(import.meta.env.BASE_URL || '/') + `images/EC/9/${member.image}`} 
+          src={(function(p){ const base = import.meta.env.BASE_URL || '/'; if(!p) return base + 'default_pfp.svg'; if (p.startsWith(base)) return p; return base + `images/EC/9/${p}`; })(member.image)} 
           alt={member.name}
           onError={(e) => {
             // Use default profile picture
