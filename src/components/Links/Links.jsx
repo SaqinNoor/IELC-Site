@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Links to subpages section
 const Links = () => {
@@ -8,7 +9,7 @@ const Links = () => {
       title: "Our Events",
       description: "Explore Past Carnivals",
       className: "link-events",
-      href: "#",
+      href: "/carnivals",
       delay: 0
     },
     {
@@ -26,9 +27,9 @@ const Links = () => {
       <div className="container">
         <div className="links-grid">
           {links.map((link) => (
-            <a 
+            <Link 
               key={link.id}
-              href={link.href}
+              to={link.href}
               className={`link-card ${link.className}`}
               data-reveal
               style={{ transitionDelay: `${link.delay}s` }}
@@ -37,7 +38,7 @@ const Links = () => {
                 <h3>{link.title}</h3>
                 <p>{link.description}</p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

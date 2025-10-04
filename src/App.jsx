@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Loader from './components/Loader/Loader'
 import Navigation from './components/Navigation/Navigation'
@@ -13,6 +13,7 @@ import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import BackgroundEffects from './components/BackgroundEffects/BackgroundEffects'
 import Spotlight from './components/Spotlight/Spotlight'
+import CarnivalShowcase from './pages/CarnivalShowcase'
 import { useScrollReveal, useParallax, useDynamicBackground } from './hooks/useScrollReveal'
 
 // Main application component
@@ -26,22 +27,27 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="app">
-        <Loader />
-        <Navigation />
-        <BackgroundEffects />
-        <Spotlight />
-        
-        <main>
-          <Hero />
-          <Activities />
-          <Journey />
-          <Accomplishments />
-          <Links />
-          <Statement />
-          <Contact />
-        </main>
-        
-        <Footer />
+          <Loader />
+          <Navigation />
+          <BackgroundEffects />
+          <Spotlight />
+          
+          <Routes>
+            <Route path="/" element={
+              <main>
+                <Hero />
+                <Activities />
+                <Journey />
+                <Accomplishments />
+                <Links />
+                <Statement />
+                <Contact />
+              </main>
+            } />
+            <Route path="/carnivals" element={<CarnivalShowcase />} />
+          </Routes>
+          
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>
