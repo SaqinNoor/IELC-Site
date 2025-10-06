@@ -142,7 +142,7 @@ const Navigation = () => {
 
       <div 
         id="mobile-menu" 
-        className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}
+        className={`mobile-menu ${isMobileMenuOpen ? 'is-open' : ''}`}
       >
         <button 
           className="close-menu-btn" 

@@ -1841,6 +1841,10 @@ footer {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.light .hamburger-line {
+  background-color: var(--black);
+}
+
 .mobile-menu {
   display: flex;
   flex-direction: column;
@@ -1856,9 +1860,19 @@ footer {
   transition: opacity 0.3s ease;
   z-index: 90;
   padding: 40px 20px;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background-color: var(--black-transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.mobile-menu.active {
+.light .mobile-menu {
+  background-color: var(--white-transparent);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
@@ -1926,6 +1940,7 @@ footer {
 .mobile-menu a.btn.ghost:hover {
   background: rgba(229, 9, 20, 0.1);
   border-color: rgba(229, 9, 20, 0.3);
+  color: var(--white);
 }
 
 .mobile-menu a.btn.cta {
