@@ -866,8 +866,10 @@ svg#waveSVG {
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border-light);
-  font-weight: '600', sans-serif;
-  font-size: '1rem', sans-serif;
+  /* Ensure the toggle inherits the site's font and uses valid numeric font-weight/size */
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
