@@ -75,6 +75,8 @@
 
 .carnival-header h1:hover {
   background: linear-gradient(135deg, var(--red) 0%, #ff6b6b 50%, var(--red) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   background-size: 200% 200%;
   animation: elegantShimmer 2s ease-in-out infinite;
   transform: scale(1.02);
