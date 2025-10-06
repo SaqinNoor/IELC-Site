@@ -7,9 +7,14 @@ const ThemeContext = createContext()
 export const ThemeProvider = ({ children }) => {
   // Initialize theme state with localStorage or default to 'dark'
   const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('ielc-theme')
-    return savedTheme || 'dark'
-  })
+    const savedTheme = localStorage.getItem('ielc-theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+    
+    const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return userPrefersDark ? 'dark' : 'light';
+  });
 
   // Update document class and save to localStorage when theme changes
   useEffect(() => {
