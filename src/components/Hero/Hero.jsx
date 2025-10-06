@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import ScrollIndicator from '../ScrollIndicator/ScrollIndicator'
 
 // Hero section with animated slogans
@@ -57,7 +58,13 @@ const Hero = () => {
       </div>
 
       <div className="hero-actions" data-reveal style={{ transitionDelay: '.6s' }}>
-        <a href={(import.meta.env.BASE_URL || '/') + 'carnivals'} className="btn cta">Our Events</a>
+        <Link
+          to="/carnivals"
+          className="btn cta"
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+        >
+          Our Events
+        </Link>
         <a href="#contact" className="btn ghost">Contact Us</a>
       </div>
 
