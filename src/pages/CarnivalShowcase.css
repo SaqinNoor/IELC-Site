@@ -477,6 +477,32 @@
   .image-overlay p {
     font-size: 0.9rem;
   }
+
+  /* Mobile: tighten carousel stacking to remove large gaps */
+  .carousel-content {
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  /* Allow sections to size naturally when stacked instead of using fixed bases */
+  .image-section,
+  .timeline-section {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  /* Make timeline height flexible and limit to viewport to avoid huge empty space */
+  .timeline {
+    height: auto;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+
+  /* Slightly reduce image container aspect on very small screens for better balance */
+  .image-container {
+    aspect-ratio: 14 / 9;
+  }
 }
 
 /* ===== Animations ===== */
