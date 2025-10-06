@@ -523,6 +523,19 @@ svg#waveSVG {
   border-color: var(--border-light);
 }
 
+.light .btn.cta {
+  background: linear-gradient(135deg, var(--red) 0%, #ff4757 100%);
+  color: var(--white);
+  border-color: transparent;
+}
+
+.light .btn.cta:hover {
+  /* Avoid changing background direction on hover to prevent gradient flipping */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+  color: var(--white) !important;
+}
+
 .nav .inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -566,7 +579,7 @@ svg#waveSVG {
     drop-shadow(0 0 24px rgba(229, 9, 20, 0.2));
 }
 
-.nav a.btn {
+.btn {
   padding: 12px 20px;
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -581,9 +594,10 @@ svg#waveSVG {
   box-shadow: 
     0 4px 16px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
-.nav a.btn::before {
+.btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -596,7 +610,7 @@ svg#waveSVG {
   z-index: -1;
 }
 
-.nav a.btn:hover {
+.btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(229, 9, 20, 0.4);
   color: var(--white);
@@ -607,22 +621,23 @@ svg#waveSVG {
   backdrop-filter: blur(25px) saturate(200%);
 }
 
-.nav a.btn:hover::before {
+.btn:hover::before {
   opacity: 1;
 }
 
-.nav a.btn.ghost {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
+.btn.ghost {
+  background: transparent;
+  border-color: var(--red);
+  color: var(--red);
 }
 
-.nav a.btn.ghost:hover {
-  background: rgba(229, 9, 20, 0.1);
-  border-color: rgba(229, 9, 20, 0.3);
+.btn.ghost:hover {
+  background: var(--red);
+  border-color: var(--red);
   color: var(--white);
 }
 
-.nav a.btn.cta {
+.btn.cta {
   background: linear-gradient(135deg, var(--red) 0%, #ff4757 100%);
   color: var(--white);
   border-color: transparent;
@@ -631,12 +646,75 @@ svg#waveSVG {
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.nav a.btn.cta:hover {
-  background: linear-gradient(135deg, #ff4757 0%, var(--red) 100%);
+.btn.cta:hover {
   transform: translateY(-2px);
   box-shadow: 
     0 8px 25px rgba(229, 9, 20, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Shimmer effect for CTA (use pseudo-element to animate) */
+.btn.cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg) translateX(0);
+  pointer-events: none;
+  will-change: transform;
+  z-index: 1;
+  animation: none 800ms linear forwards;
+}
+
+.btn.cta:hover::after {
+  animation: ctaShimmer 900ms linear forwards;
+}
+
+@keyframes ctaShimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(150%) skewX(-20deg); }
+}
+
+/* Ensure text stays above the shimmer */
+.btn.cta > * {
+  position: relative;
+  z-index: 2;
+}
+
+.light .btn {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.light .btn:hover {
+  background: rgba(229, 9, 20, 0.1) !important;
+  border-color: rgba(229, 9, 20, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+.light .btn.ghost {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--border-light);
+}
+
+.light .btn.cta {
+  background: linear-gradient(135deg, var(--red) 0%, #ff4757 100%);
+  color: var(--white);
+  border-color: transparent;
+}
+
+.light .btn.cta:hover {
+  background: linear-gradient(135deg, #ff4757 0%, var(--red) 100%) !important;
+  color: var(--white) !important;
 }
 
 .nav-links {
@@ -1026,6 +1104,34 @@ svg#waveSVG {
 .hero-description.reveal p {
   opacity: 1;
   transform: translateY(0);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.hero-actions .btn {
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 30px;
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 /* ===== Scroll Indicator Styles ===== */
@@ -1536,7 +1642,6 @@ svg#waveSVG {
     transparent 100%
   );
   transition: left 0.6s ease;
-  z-index: 4;
 }
 
 .link-card:hover::before {
@@ -1633,18 +1738,35 @@ svg#waveSVG {
 }
 
 @media (max-width: 480px) {
-  .link-card {
-    height: 220px;
-    padding: 20px;
+  .hero-title {
+    font-size: 18px;
+    padding: 10px 20px;
   }
-  
-  .link-card h3 {
-    font-size: 1.3rem;
+
+  .slogan-text {
+    font-size: 1.2rem;
   }
-  
-  .link-card p {
-    font-size: 0.85rem;
-    padding: 5px 14px;
+
+  .hero-description p {
+    font-size: 1rem;
+  }
+
+  .mobile-menu a.btn {
+    font-size: 1.2rem;
+    padding: 14px 28px;
+  }
+
+  .mobile-section-title {
+    font-size: 0.8rem;
+  }
+
+  .mobile-menu .social-links a {
+    padding: 10px;
+  }
+
+  .mobile-menu .social-links svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -1953,11 +2075,9 @@ footer {
 }
 
 .mobile-menu a.btn.cta:hover {
-  background: linear-gradient(135deg, #ff4757 0%, var(--red) 100%);
+  /* Keep the original gradient; avoid flipping direction on hover */
   transform: translateY(-2px);
-  box-shadow: 
-    0 8px 25px rgba(229, 9, 20, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 /* Mobile Menu Sections */
@@ -2145,6 +2265,39 @@ footer {
   }
 
   .scroll-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .slogan-text {
+    font-size: 1.2rem;
+  }
+
+  .hero-description p {
+    font-size: 1rem;
+  }
+
+  .mobile-menu a.btn {
+    font-size: 1.2rem;
+    padding: 14px 28px;
+  }
+
+  .mobile-section-title {
+    font-size: 0.8rem;
+  }
+
+  .mobile-menu .social-links a {
+    padding: 10px;
+  }
+
+  .mobile-menu .social-links svg {
     width: 20px;
     height: 20px;
   }

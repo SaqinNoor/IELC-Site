@@ -32,6 +32,8 @@ export const useScrollReveal = () => {
 // Parallax effects hook
 export const useParallax = () => {
   useEffect(() => {
+    if (window.innerWidth <= 768) return;
+
     let ticking = false
 
     const updateParallax = () => {
@@ -65,6 +67,8 @@ export const useParallax = () => {
 // Dynamic background intensity hook
 export const useDynamicBackground = () => {
   useEffect(() => {
+    if (window.innerWidth <= 768) return;
+
     let scrollTimeout
 
     const handleScroll = () => {

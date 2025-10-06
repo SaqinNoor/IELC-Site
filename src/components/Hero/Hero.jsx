@@ -56,6 +56,11 @@ const Hero = () => {
         </p>
       </div>
 
+      <div className="hero-actions" data-reveal style={{ transitionDelay: '.6s' }}>
+        <a href="/carnivals" className="btn cta">Our Events</a>
+        <a href="#contact" className="btn ghost">Contact Us</a>
+      </div>
+
       <ScrollIndicator />
     </header>
   )
