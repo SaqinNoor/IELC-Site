@@ -38,6 +38,24 @@ const Contact = () => {
             </div>
           ))}
         </div>
+
+        <div className="location-header" data-reveal style={{ transitionDelay: '0.2s' }}>
+          <h3 className="location-title">Our Location</h3>
+          <p className="location-address">Ideal School & College, Motijheel, Dhaka-1000</p>
+        </div>
+
+        <div className="map-container" data-reveal style={{ transitionDelay: '0.4s' }}>
+          <iframe
+            src="https://www.google.com/maps?q=Ideal+School+and+College+Motijheel+Dhaka+1000&z=17&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ideal School & College, Motijheel, Dhaka-1000"
+          ></iframe>
+        </div>
       </div>
     </section>
   )
