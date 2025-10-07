@@ -7,7 +7,7 @@ const Accomplishments = () => {
   const accomplishments = [
     {
       id: 1,
-      number: 5,
+      number: 6,
       label: "National Festivals",
       delay: 0
     },
@@ -19,7 +19,7 @@ const Accomplishments = () => {
     },
     {
       id: 3,
-      number: 6,
+      number: 8,
       label: "Magazines",
       delay: 0.2
     }

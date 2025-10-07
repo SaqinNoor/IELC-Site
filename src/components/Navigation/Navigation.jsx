@@ -40,7 +40,7 @@ const Navigation = () => {
               className="header-logo-img"
             />
             <span className="brand-text">
-              Ideal <span className="highlight">English</span> Language Club
+              Ideal English Language Club
             </span>
           </a>
 

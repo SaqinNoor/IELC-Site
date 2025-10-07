@@ -37,7 +37,7 @@ const Hero = () => {
   return (
     <header className="hero">
       <h1 className="hero-title" data-reveal>
-        Ideal <span className="highlight">English</span> Language Club
+        Ideal English Language Club
       </h1>
 
       <div className="slogan-container" data-reveal style={{ transitionDelay: '.2s' }}>
